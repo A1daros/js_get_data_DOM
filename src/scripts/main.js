@@ -2,13 +2,15 @@
 
 const spanData = document.querySelectorAll('.population');
 const convertedSpanData = Array.from(spanData).map((span) => {
-  span.textContent = span.textContent.trim().replace(/[,\s]/g, '');
+  const raw = span.textContent;
+  const cleaned = raw.trim().replace(/[,\s]/g, '');
+  const numValue = Number(cleaned);
 
-  if (Number.isNaN(Number(span.textContent))) {
+  if (Number.isNaN(numValue)) {
     return 0;
   }
 
-  const population = Number(span.textContent);
+  const population = numValue;
 
   return population;
 });
